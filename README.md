@@ -31,34 +31,37 @@ AI20K212-NguyenThiThuHien-Day07/
 ## ⚙️ Cấu hình và Cài đặt (Setup & Configuration)
 Để hệ thống chạy mượt mà, vui lòng thực hiện đúng 2 bước cấu hình dưới đây:
 
-1. Cài đặt thư viện môi trường
-Mở Terminal tại thư mục gốc của dự án và chạy lệnh sau để cài đặt các package cần thiết:
+**1. Cài đặt thư viện môi trường**
 
-Bash
+Mở Terminal tại thư mục gốc của dự án và chạy lệnh sau để cài đặt các package cần thiết:
+```
 pip install pytest python-dotenv sentence-transformers openai
-2. Thiết lập file biến môi trường (.env)
+```
+**2. Thiết lập file biến môi trường (.env)**
+
 Tạo một file có tên chính xác là .env tại thư mục gốc (ngang hàng với thư mục src). Tùy vào nhu cầu sử dụng, hãy copy và dán một trong hai cấu hình sau vào file:
 
-🔹 Lựa chọn A: Dùng Local Model (Khuyên dùng)
+**🔹 Lựa chọn A: Dùng Local Model (Khuyên dùng)**
 
 Chạy offline, hoàn toàn miễn phí và không bị lỗi giới hạn lượt gọi (Rate Limit 429). Khi chạy lần đầu, máy sẽ tự động tải model all-MiniLM-L6-v2 về.
-
-Đoạn mã
+```
 EMBEDDING_PROVIDER=local
 LOCAL_EMBEDDING_MODEL=all-MiniLM-L6-v2
-🔹 Lựa chọn B: Dùng OpenAI API (Yêu cầu có Key)
+```
+**🔹 Lựa chọn B: Dùng OpenAI API (Yêu cầu có Key)**
 
 Dành cho trường hợp muốn test sức mạnh thực sự của mô hình xịn từ OpenAI. Lưu ý nếu dùng Key miễn phí (như Github Token) có thể bị giới hạn 150 requests/ngày.
 
-Đoạn mã
+```
 EMBEDDING_PROVIDER=openai
 OPENAI_EMBEDDING_MODEL=text-embedding-3-small
 OPENAI_API_KEY=dán_api_key_của_bạn_vào_đây
-(Lưu ý: Tuyệt đối không push file .env lên GitHub để tránh lộ API Key. Hãy đảm bảo file .env đã được thêm vào .gitignore)
+```
 
-🚀 Hướng dẫn sử dụng (Usage)
-1. Chạy Unit Test kiểm tra Core Implementation:
+## 🚀 Hướng dẫn sử dụng (Usage)
+**1. Chạy Unit Test kiểm tra Core Implementation:**
 Chạy toàn bộ test case do giảng viên cung cấp để đảm bảo source code hoạt động chuẩn xác:
 
-Bash
+```
 pytest tests/ -v
+```
